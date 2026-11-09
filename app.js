@@ -43,7 +43,7 @@ function render() {
 }
 function messageFor(record) {
   const time = formatDateTime(record.time);
-  return `[베리타스 러닝센터] 안녕하세요, 보호자님. ${record.name} 학생이 ${time}에 안전하게 출석하였습니다. 오늘도 학생이 학습에 집중할 수 있도록 세심히 지도하겠습니다. 감사합니다.`;
+  return `【베리타스 러닝센터】\n안녕하세요. ${record.name} 학생이 ${time}에 안전하게 출석하였습니다. 오늘도 ${record.name} 학생이 학습에 집중할 수 있도록 세심히 지도하겠습니다. 감사합니다.`;
 }
 function openSMS(record) {
   const student = state.students.find((item) => item.id === record.studentId);
