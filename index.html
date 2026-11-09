@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#183b35">
+  <meta name="description" content="베리타스 러닝센터 학생 출결과 보호자 문자 알림을 관리합니다.">
+  <title>베리타스 러닝센터 출결</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./icon.svg">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-mark" aria-hidden="true">V</div>
+    <div class="brand-copy"><p class="eyebrow">VERITAS LEARNING CENTER</p><h1>베리타스 러닝센터</h1></div>
+    <button id="install-button" class="install-button" type="button" hidden>홈 화면 설치</button>
+  </header>
+  <main class="layout">
+    <section class="intro"><div><p class="eyebrow">ATTENDANCE MANAGEMENT</p><h2>오늘의 출결을<br><span>차분하게 관리하세요.</span></h2><p class="intro-text">출석을 기록하고 보호자님께 문자 알림을 보낼 수 있어요.</p></div><div class="today-card"><span>오늘</span><strong id="today-label">—</strong><small id="today-count">출석 0명</small></div></section>
+    <section class="panel attendance-panel">
+      <div class="section-heading"><div><p class="eyebrow">CHECK-IN</p><h2>출석 기록</h2></div><span class="status-pill"><i></i> 기기 내 저장</span></div>
+      <form id="attendance-form" class="attendance-form">
+        <label>학생 선택<select id="attendance-student" required><option value="">학생을 먼저 등록해 주세요</option></select></label>
+        <label>출석 시간<input id="attendance-time" type="datetime-local" required></label>
+        <button class="primary-button" type="submit">출석 기록 및 문자 작성</button>
+      </form>
+      <p class="hint">문자 앱에 내용이 입력됩니다. 발송 버튼을 눌러야 실제로 전송돼요.</p>
+    </section>
+    <section class="panel">
+      <div class="section-heading"><div><p class="eyebrow">STUDENT ROSTER</p><h2>학생 명단 <span id="student-count" class="count">0</span></h2></div></div>
+      <form id="student-form" class="student-form">
+        <label>학생 이름<input id="student-name" type="text" placeholder="예: 김하늘" maxlength="40" required></label>
+        <label>보호자 휴대폰<input id="parent-phone" type="tel" inputmode="tel" placeholder="010-0000-0000" required></label>
+        <button class="secondary-button" type="submit">학생 추가</button>
+      </form>
+      <div id="empty-students" class="empty-state">등록된 학생이 없습니다. 이름과 보호자 번호를 입력해 주세요.</div>
+      <ul id="student-list" class="student-list" aria-label="학생 명단"></ul>
+    </section>
+    <section class="panel records-panel">
+      <div class="section-heading record-heading"><div><p class="eyebrow">ATTENDANCE HISTORY</p><h2>출결 기록 <span id="record-count" class="count">0</span></h2></div><button id="delete-selected" class="delete-button" type="button" disabled>선택 삭제</button></div>
+      <div id="empty-records" class="empty-state">아직 출결 기록이 없습니다.</div>
+      <div class="table-wrap"><table><thead><tr><th><input id="select-all" type="checkbox" aria-label="표시된 기록 전체 선택"></th><th>학생</th><th>출석 시간</th><th>알림</th></tr></thead><tbody id="record-list"></tbody></table></div>
+    </section>
+    <p class="privacy-note">학생 이름과 보호자 연락처, 출결 내용은 이 브라우저의 기기에만 저장됩니다. 브라우저 데이터 삭제 또는 다른 기기 사용 시 내용이 유지되지 않으니 필요한 정보는 별도로 백업해 주세요.</p>
+  </main>
+  <footer>VERITAS LEARNING CENTER <span>·</span> 출결 관리</footer>
+  <script src="./app.js" defer></script>
+</body>
+</html>
